@@ -192,6 +192,10 @@ $(function(){
 							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
 						});
 					}else{
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
+							$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
+							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
+						});
 						$("div.main").html(xhr.responseText);
 						$("#CropIt").Jcrop({
 							onChange: showCoords,
@@ -209,7 +213,6 @@ $(function(){
 							$("#w").val(c.w);
 							$("#h").val(c.h);
 						}
-						setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1000);
 					}
 				}
 			});
@@ -224,18 +227,16 @@ $(function(){
 				},
 				uploadProgress:function(olay, yuklenen, toplam, yuzde){},
 				complete: function(xhr){
-					if(xhr.responseText == "SAMEPAGE"){
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-						});
-					}else if(xhr.responseText == "HATA"){
+					if(xhr.responseText == "HATA"){
 						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
 							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
 							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
 						});
 					}else{
-
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPagePhotoCroppedOK"}).done(function(data){
+							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+						});
 					}
 				}
 			});
@@ -365,36 +366,42 @@ $(function(){
 				PageDescription = $.trim(PageDescription);
 				var PageKeywords = $("input[name=PageKeywords]").val();
 				PageKeywords = $.trim(PageKeywords);
+				var PageProfilePhoto = $("input[name=PageProfilePhoto]").val();
+				// PageProfilePhoto = $.trim(PageProfilePhoto);
 				var PageStatus = $("select[name=PageStatus]").val();
 				PageStatus = $.trim(PageStatus);
 				var degerler = "PageID=" + PageID + "&PageTitle=" + PageTitle + "&PageSummary=" + PageSummary + "&PageContent=" + PageContent + "&PageDescription=" + PageDescription + "&PageKeywords=" + PageKeywords + "&PageStatus=" + PageStatus;
-				// alert(degerler);
-				$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-					$("#InfoPageManagement").hide().removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-				});
-				$.ajax({
-					type: "POST",
-					url: "_includes/pagemanagement/ajaxes/updatePage.php",
-					data : degerler,
-					success: function(sonuc){
-						if(sonuc == "HATA"){
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUpdateError"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
-								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-							});
-						}else if(sonuc == "SAMEPAGE"){
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-							});
-						}else{
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageUpdated"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
-								setTimeout(function(){window.location=RefererPage}, 1000);
-							});
-						}
-					}
-				});
+				if(PageProfilePhoto == ""){
+
+				}else{
+
+				}
+				// $.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+				// 	$("#InfoPageManagement").hide().removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+				// });
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: "_includes/pagemanagement/ajaxes/updatePage.php",
+				// 	data : degerler,
+				// 	success: function(sonuc){
+				// 		if(sonuc == "HATA"){
+				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUpdateError"}).done(function(data){
+				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
+				// 				setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+				// 			});
+				// 		}else if(sonuc == "SAMEPAGE"){
+				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
+				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+				// 				setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+				// 			});
+				// 		}else{
+				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageUpdated"}).done(function(data){
+				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
+				// 				setTimeout(function(){window.location=RefererPage}, 1000);
+				// 			});
+				// 		}
+				// 	}
+				// });
 			});
 		/*UPDATE PAGE TRANSACTIONS - ENDS*/
 

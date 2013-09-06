@@ -37,7 +37,9 @@ $ajaxcode = array(
 	"msgDeletePage"					=>"Sayfa başarı ile silindi. Lütfen bekleyiniz, sayfa yenileniyor..",
 	"msgMissingPage"					=>"Silmeye çalıştığınız sayfa bulunamadı!.",
 	"msgPageUpdated"					=>"Sayfa başarı ile güncellendi. Lütfen bekleyiniz, sayfalar listesine yönlendiriliyorsunuz..",
-	"msgNoSubPage"						=>"Bu sayfaya ait alt sayfa bulunmamaktadır."
+	"msgNoSubPage"						=>"Bu sayfaya ait alt sayfa bulunmamaktadır.",
+	"msgPagePhotoCroppedOK"				=>"Sayfa profil fotoğrafı başarı ile kırpıldı. Lütfen bekleyiniz, sayfalar listesine yönlendiriliyorsunuz..",
+	"msgBeforePagePhotoCrop"				=>"Sayfa başarı ile kaydedildi. Sayfa profil fotosunı kırpmak için yönlendiriliyorsunuz.."
 
 );
 

@@ -1,7 +1,7 @@
 <?php
 	echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null;
 ?>
-<h2 class="title"><?php echo $adminlang["EditPageTitle"];?></h2>
+<h2 class="title"><?php echo $adminlang["EditPagePageTitle"];?></h2>
 <div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <?php
 	$id = get("id");
@@ -13,23 +13,10 @@
 	$sayfa = gelen($sorgu);
  ?>
 <div class="main">
-	<form action="" method="post" onsubmit="return false">
+	<!-- <form action="_includes/pagemanagement/ajaxes/updatePageWPhoto.php" method="post" enctype="multipart/form-data"> -->
+	<form action="" method="post" enctype="multipart/form-data" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo $_SERVER["HTTP_REFERER"] ?>'/>
 		<input type="hidden" name="RefererPageID" id="RefererPageID" value='<?php echo $sayfa["PageID"]; ?>'/>
-		<select name="Language">
-
-			<?php
-
-					$sorgu = sorgula("SELECT * FROM languages WHERE LangStatus = 1");
-					if(mysql_affected_rows()){
-						while($gelendil = gelen($sorgu)){
-			?>
-			<option value='<?php echo $gelendil["LangID"];?>' <?php if($sayfa["LangID"] == $gelendil["LangID"]){ echo selected; } ?>>-- <?php echo $gelendil["LangName"];?></option>
-			<?php
-						}
-					}
-			 ?>
-		</select>
 		<p><span class="gray size10"><?php echo $adminlang["msgLanguage"];?></span><br><br></p>
 		<p><strong><?php echo $adminlang["PageTitle"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>
 		<input type="text" name="PageTitle" id="PageTitle" value='<?php echo $sayfa["PageTitle"]; ?>'><br>
@@ -43,6 +30,11 @@
 		<p><strong><?php echo $adminlang["PageKeywords"];?></strong></p>
 		<input type="text" name="PageKeywords" id="PageKeywords" value='<?php echo $sayfa["PageKeywords"]; ?>'>
 		<p><span class="gray size10"><?php echo $adminlang["msgMetaKeywords"];?></span><br><br></p>
+		<div>
+		<p><strong><?php echo $adminlang["PageProfilePhoto"];?></strong></p>
+		<p><img src='<?php echo URL.ss($sayfa["PageProfilePhoto"]) ?>' alt="" style="width: 125px; height: 125px;"></p>
+		<input type="file" name="PageProfilePhoto"/><br>
+		</div>
 		<p><strong><?php echo $adminlang["PageStatus"];?></strong></p>
 		<select name="PageStatus">
 			<option value="0" <?php echo !$sayfa["PageStatus"] ? 'selected' : null; ?>><?php echo $adminlang["Offline"];?></option>

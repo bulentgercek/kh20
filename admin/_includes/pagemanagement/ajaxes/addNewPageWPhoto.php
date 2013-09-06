@@ -1,48 +1,5 @@
 <?php
-
-	/*OLD*/
-		// if($_POST){
-
-		// 	require_once("../../../../config/config.php");
-		// 	require_once("../../../../config/system.php");
-
-		// 	$LangID = session("SMLID");
-		// 	$PageTitle = post("PageTitle", true);
-		// 	$PageSummary = post("PageSummary", true);
-		// 	$PageContent = post("PageContent", true);
-		// 	$PageDescription = post("PageDescription", true);
-		// 	$PageKeywords = post("PageKeywords", true);
-		// 	$PageStatus = post("PageStatus", true);
-		// 	$PageSefLink = sefLink($PageTitle);
-
-		// 	$isThere = sorgula("SELECT * FROM pages WHERE PageSefLink = '$PageSefLink'");
-		// 	if(mysql_affected_rows()){
-		// 		echo "SAMEPAGE";
-		// 	}else{
-		// 		$insert = sorgula("INSERT INTO pages SET
-		// 			LangID = '$LangID',
-		// 			PageTitle = '$PageTitle',
-		// 			PageSummary = '$PageSummary',
-		// 			PageContent = '$PageContent',
-		// 			PageDescription = '$PageDescription',
-		// 			PageKeywords = '$PageKeywords',
-		// 			PageSefLink = '$PageSefLink',
-		// 			PageStatus = '$PageStatus'
-		// 			");
-
-		// 		if(mysql_affected_rows()){
-		// 			echo "OKAY";
-		// 		}else{
-		// 			echo "HATA";
-		// 		}
-		// 	}
-
-		// }else{
-		// 	echo "HOP!";
-		// }
-	/*OLD*/
-
-	if(@$_POST["SubmitAddNewPage2"]){
+	if(@$_POST){
 
 		require_once("../../../../config/config.php");
 		require_once("../../../../config/system.php");
@@ -94,7 +51,7 @@
 					$sonID = mysql_insert_id();
 
 					if($insert){
-						echo '<form id="AddNewPageCropDone" action="_includes/pagemanagement/ajaxes/addNewPageWPhoto.php" method="post">
+						echo '<form id="AddNewPageCropDone" action="_includes/pagemanagement/ajaxes/addNewPageWPhoto2.php" method="post">
 							<img src="'.URL.$fotografYolu.'" alt="" id="CropIt" />
 							<input type="hidden" name="x" id="x" />
 							<input type="hidden" name="y" id="y" />
@@ -118,53 +75,7 @@
 				$handle-> Clean();
 			}
 		}
-		// if($handle->processed){
-		// 	echo "OK";
-		// 	$handle-> Clean();
-		// }else{
-		// 	echo "HATA";
-		// 	$handle-> Clean();
-		// }
 	}else{
-		echo "HOP!";
-	}
-
-	if (@$_POST["SubmitAddNewPageCrop"]){
-
-		$x = $_POST["x"];
-		$y = $_POST["y"];
-		$x2 = $_POST["x2"];
-		$y2 = $_POST["y2"];
-		$w = $_POST["w"];
-		$h = $_POST["h"];
-		$sonekleneninID = $_POST["soneklenenID"];
-
-		$kesilen = $_POST['resimlink'];
-		$kesildi = new Upload($kesilen);
-		if ($kesildi->uploaded){
-			$kesildi->file_new_name_body = substr(base64_encode(uniqid(true)), 0, 20);
-			$resimWidth = $kesildi->image_src_x - $x2;
-			$resimYukseklik = $kesildi->image_src_y - $y2;
-			$kesildi->image_crop = "{$y} {$resimWidth} {$resimYukseklik} {$x}";
-			$kesildi->allowed = array('image/*'); // sadece resimler kabul edilsin
-			$kesildi->Process("../../../../_uploads/pages/profile/");
-			$yenifotografYolu = "_uploads/pages/profile/".$kesildi->file_dst_name;
-			if ($kesildi->processed){
-				$sorgum = "UPDATE hizmetler SET ProfilFoto = '$yenifotografYolu' WHERE PageID = '$sonekleneninID'";
-				$update = sorgula($sorgum);
-				if($update){
-						bilgi(1,"Sayfa başarı ile kaydedildi. Sayfa listesine yönlendiriliyorsunuz..");
-						yonlendir(URL."admin/index.php?do=servicepages",1);
-					}else{
-						bilgi(3,"Kaydetme işleminde hata oluştu. Lütfen daha sonra tekrar deneyiniz. UPDATE SORGU HATASI");
-					}
-			}else {
-				bilgi(3,"Kaydetme işleminde hata oluştu. Lütfen daha sonra tekrar deneyiniz. CROP İŞLEMİ YAPILAMADI");
-			}
-			$kesildi->Clean();
-		}else {
-			bilgi(3,"Kaydetme işleminde hata oluştu. Lütfen daha sonra tekrar deneyiniz. DOSYA UPLOAD EDİLEMEDİ ".$kesilen."  ".$kesildi->error);
-		}
-		$kesildi->Clean();
+		echo "HOP";
 	}
 ?>

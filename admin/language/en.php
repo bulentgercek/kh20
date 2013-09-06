@@ -172,7 +172,9 @@ $adminlang = array(
 			/*Yeni Sayfa Ekle - ENDS*/
 
 			/*Sayfa Düzenle - STARTS*/
-			"EditPageTitle"					=>"EDIT PAGE",
+			"EditPagePageTitle"					=>"EDIT PAGE",
+
+			"PageProfilePhoto"				=>"Sayfa Profil Fotoğrafı",
 			/*Sayfa Düzenle - ENDS*/
 
 			/*Sayfaları Göster - STARTS*/
