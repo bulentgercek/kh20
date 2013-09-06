@@ -317,6 +317,7 @@ $(function(){
 				PageDescription = $.trim(PageDescription);
 				var PageKeywords = $("input[name=PageKeywords]").val();
 				PageKeywords = $.trim(PageKeywords);
+				var PageProfilePhoto = $("input[name=PageProfilePhoto]").val();
 				var PageStatus = $("select[name=PageStatus]").val();
 				PageStatus = $.trim(PageStatus);
 				var degerler = "SubPageID=" + SubPageID + "&PageTitle=" + PageTitle + "&PageSummary=" + PageSummary + "&PageContent=" + PageContent + "&PageDescription=" + PageDescription + "&PageKeywords=" + PageKeywords + "&PageStatus=" + PageStatus;
@@ -372,6 +373,7 @@ $(function(){
 										$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show();
 										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
 									});
+									$("div.n_warning").remove();
 									$("div.main").html(xhr.responseText);
 									$("#CropIt").Jcrop({
 										onChange: showCoords,

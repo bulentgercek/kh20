@@ -13,6 +13,7 @@ if (@$_POST){
 		$w = $_POST["w"];
 		$h = $_POST["h"];
 		$sonekleneninID = $_POST["soneklenenID"];
+		$RefererPage = $_POST["RefererPage"];
 
 		$kesilen = $_POST["resimlink"];
 		$kesildi = new Upload($kesilen);
@@ -28,7 +29,7 @@ if (@$_POST){
 				$sorgum = "UPDATE pages SET PageProfilePhoto = '$yenifotografYolu' WHERE PageID = '$sonekleneninID'";
 				$update = sorgula($sorgum);
 				if($update){
-					yonlendir(URL."admin/index.php?zone=pagemanagement&do=showpages");
+					yonlendir($RefererPage);
 				}else{
 
 				}

@@ -42,7 +42,7 @@
 		<input type="text" name="PageKeywords" id="PageKeywords" value="">
 		<p><span class="gray size10"><?php echo $adminlang["msgMetaKeywords"];?></span><br><br></p>
 		<p><strong><?php echo $adminlang["PageProfilePhoto"];?> </strong></p>
-		<input type="file" name="ProfilFoto"/><br>
+		<input type="file" name="PageProfilePhoto"/><br>
 		<p><strong><?php echo $adminlang["PageStatus"];?></strong></p>
 		<select name="PageStatus">
 			<option value="0"><?php echo $adminlang["Offline"];?></option>

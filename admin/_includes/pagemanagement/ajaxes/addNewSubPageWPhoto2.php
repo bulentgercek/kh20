@@ -28,7 +28,7 @@ if (@$_POST){
 				$sorgum = "UPDATE pages SET PageProfilePhoto = '$yenifotografYolu' WHERE PageID = '$sonekleneninID'";
 				$update = sorgula($sorgum);
 				if($update){
-					yonlendir(URL."admin/index.php?zone=pagemanagement&do=showpages");
+					yonlendir(URL."admin/index.php?zone=pagemanagement&do=showsubpages");
 				}else{
 
 				}

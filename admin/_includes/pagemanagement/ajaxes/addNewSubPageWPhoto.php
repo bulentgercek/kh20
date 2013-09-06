@@ -6,7 +6,7 @@
 		require_once("../../../_classes/class.upload.php");
 
 		$LangID = session("SMLID");
-		$foto = $_FILES['ProfilFoto'];
+		$foto = $_FILES['PageProfilePhoto'];
 		$SubPageID = post("SubPageID", true);
 		$PageTitle = post("PageTitle", true);
 		$PageSummary = post("PageSummary", true);

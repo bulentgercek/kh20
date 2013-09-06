@@ -7,6 +7,7 @@
 		require_once("../../../_classes/class.upload.php");
 
 		$PageID = post("RefererPageID", true);
+		$RefererPage = $_POST["RefererPage"];
 		$LangID = session("SMLID");
 		$foto = $_FILES['PageProfilePhoto'];
 		$PageTitle = post("PageTitle", true);
@@ -58,6 +59,7 @@
 					if($insert){
 						echo '<form id="UpdatePageCropDone" action="_includes/pagemanagement/ajaxes/updatePageWPhoto2.php" method="post">
 							<img src="'.URL.$fotografYolu.'" alt="" id="CropIt" />
+							<input type="hidden" name="RefererPage" id="RefererPage" value="'.$RefererPage.'"/>
 							<input type="hidden" name="x" id="x" />
 							<input type="hidden" name="y" id="y" />
 							<input type="hidden" name="x2" id="x2" />
