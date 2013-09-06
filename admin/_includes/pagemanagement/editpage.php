@@ -1,5 +1,7 @@
 <?php
 	echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null;
+	$sorgu = sorgula("SELECT PageProfilPhotoWidth, PageProfilPhotoHeight FROM othersettings");
+	$bilgi = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["EditPagePageTitle"];?></h2>
 <div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
@@ -13,11 +15,11 @@
 	$sayfa = gelen($sorgu);
  ?>
 <div class="main">
-	<!-- <form action="_includes/pagemanagement/ajaxes/updatePageWPhoto.php" method="post" enctype="multipart/form-data"> -->
-	<form action="" method="post" enctype="multipart/form-data" onsubmit="return false">
+	<form id="UpdatePageWPhoto" action="_includes/pagemanagement/ajaxes/updatePageWPhoto.php" method="post" enctype="multipart/form-data" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo $_SERVER["HTTP_REFERER"] ?>'/>
 		<input type="hidden" name="RefererPageID" id="RefererPageID" value='<?php echo $sayfa["PageID"]; ?>'/>
-		<p><span class="gray size10"><?php echo $adminlang["msgLanguage"];?></span><br><br></p>
+		<input type="hidden" name="Width" id="Width" value='<?php echo $bilgi["PageProfilPhotoWidth"]; ?>'/>
+		<input type="hidden" name="Height" id="Height" value='<?php echo $bilgi["PageProfilPhotoHeight"]; ?>'/>
 		<p><strong><?php echo $adminlang["PageTitle"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>
 		<input type="text" name="PageTitle" id="PageTitle" value='<?php echo $sayfa["PageTitle"]; ?>'><br>
 		<p><strong><?php echo $adminlang["PageSummary"];?></strong></p>
@@ -32,7 +34,7 @@
 		<p><span class="gray size10"><?php echo $adminlang["msgMetaKeywords"];?></span><br><br></p>
 		<div>
 		<p><strong><?php echo $adminlang["PageProfilePhoto"];?></strong></p>
-		<p><img src='<?php echo URL.ss($sayfa["PageProfilePhoto"]) ?>' alt="" style="width: 125px; height: 125px;"></p>
+		<p><img src='<?php echo URL.ss($sayfa["PageProfilePhoto"]) ?>' alt="" style='<?php echo "width: ".$bilgi["PageProfilPhotoWidth"]."px; height: ".$bilgi["PageProfilPhotoHeight"]."px;"; ?>'></p>
 		<input type="file" name="PageProfilePhoto"/><br>
 		</div>
 		<p><strong><?php echo $adminlang["PageStatus"];?></strong></p>

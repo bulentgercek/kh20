@@ -6,7 +6,7 @@
 		require_once("../../../../config/system.php");
 
 		$PageID = post("PageID", true);
-		$LangID = post("LangID", true);
+		$LangID = session("SMLID");
 		$PageTitle = post("PageTitle", true);
 		$PageSummary = post("PageSummary", true);
 		$PageContent = post("PageContent", true);

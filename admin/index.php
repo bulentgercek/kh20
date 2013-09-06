@@ -96,6 +96,7 @@
 						<li class="b2"><a class="icon settings" href="?zone=sitesettings&do=settings"><?php echo $adminlang["SiteSettings"];?></a></li>
 						<li class="b1"><a class="icon mail" href="?zone=sitesettings&do=emailsettings"><?php echo $adminlang["EMailSettings"];?></a></li>
 						<li class="b2"><a class="icon social" href="?zone=sitesettings&do=social"><?php echo $adminlang["SocialNetworkSettings"];?></a></li>
+						<li class="b1"><a class="icon settings" href="?zone=sitesettings&do=othersettings"><?php echo $adminlang["OtherSettings"];?></a></li>
 					</ul>
 				</div>
 

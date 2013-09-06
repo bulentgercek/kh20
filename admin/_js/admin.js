@@ -168,79 +168,83 @@ $(function(){
 			});
 		/*ADD NEW PAGE TRANSACTIONS - ENDS*/
 
-		$("#SubmitAddNewPage2").click(function(){
-			var Page = $("input[name=RefererPage]").val();
-			var PageTitle = $("input[name=PageTitle]").val();
-			PageTitle = $.trim(PageTitle);
+		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - STARTS - NEWONE*/
+			$("#SubmitAddNewPage2").click(function(){
+				var Page = $("input[name=RefererPage]").val();
+				var Width = $("input[name=Width]").val();
+				var Height = $("input[name=Height]").val();
+				var PageTitle = $("input[name=PageTitle]").val();
+				PageTitle = $.trim(PageTitle);
 
-			$("#AddNewPageWPhoto").ajaxForm({
-				beforeSend: function(){
-					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-					});
-				},
-				uploadProgress:function(olay, yuklenen, toplam, yuzde){},
-				complete: function(xhr){
-					if(xhr.responseText == "SAMEPAGE"){
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+				$("#AddNewPageWPhoto").ajaxForm({
+					beforeSend: function(){
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+							$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
 						});
-					}else if(xhr.responseText == "HATA"){
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-						});
-					}else{
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
-						});
-						$("div.main").html(xhr.responseText);
-						$("#CropIt").Jcrop({
-							onChange: showCoords,
-							onSelect: showCoords,
-							setSelect: [0,0,200,200],
-							allowResize : true,
-							aspectRatio: 200 / 200,
-							addClass: 'jcrop-dark'
-						});
-						function showCoords (c){
-							$("#x").val(c.x);
-							$("#y").val(c.y);
-							$("#x2").val(c.x2);
-							$("#y2").val(c.y2);
-							$("#w").val(c.w);
-							$("#h").val(c.h);
+					},
+					uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+					complete: function(xhr){
+						if(xhr.responseText == "SAMEPAGE"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+							});
+						}else if(xhr.responseText == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+							});
+						}else{
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
+							});
+							$("div.main").html(xhr.responseText);
+							$("#CropIt").Jcrop({
+								onChange: showCoords,
+								onSelect: showCoords,
+								setSelect: [0,0,Width,Height],
+								allowResize : true,
+								aspectRatio: Width / Height,
+								addClass: 'jcrop-dark'
+							});
+							function showCoords (c){
+								$("#x").val(c.x);
+								$("#y").val(c.y);
+								$("#x2").val(c.x2);
+								$("#y2").val(c.y2);
+								$("#w").val(c.w);
+								$("#h").val(c.h);
+							}
 						}
 					}
-				}
+				});
 			});
-		});
 
-		$("#SubmitAddNewPageCrop").click(function(){
-			$("#AddNewPageCropDone").ajaxForm({
-				beforeSend: function(){
-					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-					});
-				},
-				uploadProgress:function(olay, yuklenen, toplam, yuzde){},
-				complete: function(xhr){
-					if(xhr.responseText == "HATA"){
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+			$("#SubmitAddNewPageCrop").click(function(){
+				$("#AddNewPageCropDone").ajaxForm({
+					beforeSend: function(){
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+							$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
 						});
-					}else{
-						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPagePhotoCroppedOK"}).done(function(data){
-							$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
-							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-						});
+					},
+					uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+					complete: function(xhr){
+						if(xhr.responseText == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+							});
+						}else{
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPagePhotoCroppedOK"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+							});
+						}
 					}
-				}
-			});
-		})
+				});
+			})
+		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - ENDS - NEWONE*/
 
 		/*ADD NEW SUBPAGE TRANSACTIONS - STARTS*/
 			$("#SubmitAddNewSubPage").click(function(){
@@ -356,6 +360,8 @@ $(function(){
 			$("#SubmitUpdatePage").click(function() {
 				var RefererPage = $("input[name=RefererPage]").val();
 				var PageID = $("input[name=RefererPageID]").val();
+				var Width = $("input[name=Width]").val();
+				var Height = $("input[name=Height]").val();
 				var PageTitle = $("input[name=PageTitle]").val();
 				PageTitle = $.trim(PageTitle);
 				var PageSummary = $("textarea[name=PageSummary]").val();
@@ -367,42 +373,109 @@ $(function(){
 				var PageKeywords = $("input[name=PageKeywords]").val();
 				PageKeywords = $.trim(PageKeywords);
 				var PageProfilePhoto = $("input[name=PageProfilePhoto]").val();
-				// PageProfilePhoto = $.trim(PageProfilePhoto);
 				var PageStatus = $("select[name=PageStatus]").val();
 				PageStatus = $.trim(PageStatus);
 				var degerler = "PageID=" + PageID + "&PageTitle=" + PageTitle + "&PageSummary=" + PageSummary + "&PageContent=" + PageContent + "&PageDescription=" + PageDescription + "&PageKeywords=" + PageKeywords + "&PageStatus=" + PageStatus;
-				if(PageProfilePhoto == ""){
 
+				if(PageTitle == ""){
+					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgRequiredZone"}).done(function(data){
+						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+							setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2000);
+					});
 				}else{
-
+					if(PageProfilePhoto == ""){
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+							$("#InfoPageManagement").hide().removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+						});
+						$.ajax({
+							type: "POST",
+							url: "_includes/pagemanagement/ajaxes/updatePage.php",
+							data : degerler,
+							success: function(sonuc){
+								if(sonuc == "HATA"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUpdateError"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+									});
+								}else if(sonuc == "SAMEPAGE"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+									});
+								}else{
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageUpdated"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){window.location=RefererPage}, 1000);
+									});
+								}
+							}
+						});
+					}else{
+						$("#UpdatePageWPhoto").ajaxForm({
+							beforeSend: function(){
+								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+									$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+								});
+							},
+							uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+							complete: function(xhr){
+								if(xhr.responseText == "HATA"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+									});
+								}else{
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
+									});
+									$("div.main").html(xhr.responseText);
+									$("#CropIt").Jcrop({
+										onChange: showCoords,
+										onSelect: showCoords,
+										setSelect: [0,0,Width,Height],
+										allowResize : true,
+										aspectRatio: Width / Height,
+										addClass: 'jcrop-dark'
+									});
+									function showCoords (c){
+										$("#x").val(c.x);
+										$("#y").val(c.y);
+										$("#x2").val(c.x2);
+										$("#y2").val(c.y2);
+										$("#w").val(c.w);
+										$("#h").val(c.h);
+									}
+								}
+							}
+						}).submit();
+					}
 				}
-				// $.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-				// 	$("#InfoPageManagement").hide().removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-				// });
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: "_includes/pagemanagement/ajaxes/updatePage.php",
-				// 	data : degerler,
-				// 	success: function(sonuc){
-				// 		if(sonuc == "HATA"){
-				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUpdateError"}).done(function(data){
-				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
-				// 				setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-				// 			});
-				// 		}else if(sonuc == "SAMEPAGE"){
-				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-				// 				setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-				// 			});
-				// 		}else{
-				// 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageUpdated"}).done(function(data){
-				// 				$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
-				// 				setTimeout(function(){window.location=RefererPage}, 1000);
-				// 			});
-				// 		}
-				// 	}
-				// });
 			});
+
+			$("#SubmitUpdatePageCrop").click(function(){
+				$("#UpdatePageCropDone").ajaxForm({
+					beforeSend: function(){
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+							$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+						});
+					},
+					uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+					complete: function(xhr){
+						if(xhr.responseText == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+							});
+						}else{
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPagePhotoCroppedOK"}).done(function(data){
+								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+							});
+						}
+					}
+				});
+			})
 		/*UPDATE PAGE TRANSACTIONS - ENDS*/
 
 		/*SORT PAGE TRANSACTIONS- STARTS*/

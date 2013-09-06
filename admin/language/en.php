@@ -16,6 +16,7 @@ $adminlang = array(
 			"SiteSettings"					=>"Site Settings",
 			"EMailSettings"				=>"E-Mail Settings",
 			"SocialNetworkSettings"			=>"Social Network Settings",
+			"OtherSettings"				=>"Other Settings",
 
 		// Kullanıcı Yönetimi
 			"UserManagementMainTitle"		=>"User Management",

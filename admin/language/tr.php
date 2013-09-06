@@ -16,6 +16,7 @@ $adminlang = array(
 			"SiteSettings"					=>"Site Ayarları",
 			"EMailSettings"				=>"E-Posta Ayarları",
 			"SocialNetworkSettings"			=>"Sosyal Ağ Ayarları",
+			"OtherSettings"				=>"Diğer Ayarlar",
 
 		// Kullanıcı Yönetimi
 			"UserManagementMainTitle"		=>"Kullanıcı Yönetimi",
@@ -72,6 +73,13 @@ $adminlang = array(
 				"msgSiteDescription"			=>"Sitenizin meta açıklama etiketi en fazla 160 karakterden oluşmalıdır. 160 karakterden daha uzun olanları arama motorları tarafından spam olarak yorumlanır.",
 				"msgSiteKeywords"				=>"Sitenizin meta anahtar kelimeleri en fazla 260 karakterden oluşmalıdır. 260 karakterden daha uzun olanları arama motorları tarafından spam olarak yorumlanır.",
 			/*Site Ayarları - ENDS*/
+
+			/*Diğer Ayarlar - STARTS*/
+				"OtherSettingsPageTitle"			=>"DİĞER AYARLAR",
+
+				"PageProfilePhotoWidth"			=>"Sayfa Profil Fotoğrafı Genişlik (px)",
+				"PageProfilePhotoHeight"			=>"Sayfa Profil Fotoğrafı Yükseklik (px)",
+			/*Diğer Ayarlar - ENDS*/
 
 			/*EPosta Ayarları - STARTS*/
 				"EMailSettingsPageTitle"			=>"E-POSTA AYARLARI",
