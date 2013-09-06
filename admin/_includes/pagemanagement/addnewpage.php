@@ -8,8 +8,8 @@
 <div class="main">
 	<form id="AddNewPageWPhoto" action="_includes/pagemanagement/ajaxes/addNewPageWPhoto.php" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo URL."admin/index.php?zone=pagemanagement&do=showpages"; ?>'/>
-		<input type="hidden" name="Width" id="Width" value='<?php echo $bilgi["PageProfilPhotoWidth"]; ?>'/>
-		<input type="hidden" name="Height" id="Height" value='<?php echo $bilgi["PageProfilPhotoHeight"]; ?>'/>
+		<input type="hidden" name="Width" id="Width" value='<?php echo PPP_W; ?>'/>
+		<input type="hidden" name="Height" id="Height" value='<?php echo PPP_H; ?>'/>
 		<p><strong><?php echo $adminlang["PageTitle"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>
 		<input type="text" name="PageTitle" id="PageTitle" value=""><br>
 		<p><strong><?php echo $adminlang["PageSummary"];?></strong></p>

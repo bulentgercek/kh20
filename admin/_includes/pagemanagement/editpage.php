@@ -18,8 +18,8 @@
 	<form id="UpdatePageWPhoto" action="_includes/pagemanagement/ajaxes/updatePageWPhoto.php" method="post" enctype="multipart/form-data" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo $_SERVER["HTTP_REFERER"] ?>'/>
 		<input type="hidden" name="RefererPageID" id="RefererPageID" value='<?php echo $sayfa["PageID"]; ?>'/>
-		<input type="hidden" name="Width" id="Width" value='<?php echo $bilgi["PageProfilPhotoWidth"]; ?>'/>
-		<input type="hidden" name="Height" id="Height" value='<?php echo $bilgi["PageProfilPhotoHeight"]; ?>'/>
+		<input type="hidden" name="Width" id="Width" value='<?php echo PPP_W; ?>'/>
+		<input type="hidden" name="Height" id="Height" value='<?php echo PPP_H; ?>'/>
 		<p><strong><?php echo $adminlang["PageTitle"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>
 		<input type="text" name="PageTitle" id="PageTitle" value='<?php echo $sayfa["PageTitle"]; ?>'><br>
 		<p><strong><?php echo $adminlang["PageSummary"];?></strong></p>

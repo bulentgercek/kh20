@@ -5,8 +5,10 @@
 <div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="n_warning" style="display: block !important; margin-bottom: -10px; width: 700px; margin-left: 10px;"><p><?php echo $adminlang["msgSelectMainPage"]; ?></p></div><br>
 <div class="main">
-	<form action="" method="post" onsubmit="return false">
+	<form id="AddNewSubPageWPhoto" action="_includes/pagemanagement/ajaxes/addNewSubPageWPhoto.php" method="post" enctype="multipart/form-data" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo URL."admin/index.php?zone=pagemanagement&do=showsubpages"; ?>'/>
+		<input type="hidden" name="Width" id="Width" value='<?php echo PPP_W; ?>'/>
+		<input type="hidden" name="Height" id="Height" value='<?php echo PPP_H; ?>'/>
 		<strong>Üst Sayfa: </strong>
 		<select name="SubPageID">
 			<option value="HOP" selected>--- Lütfen Ana Sayfa Seçiniz ---</option>
@@ -39,11 +41,13 @@
 		<p><strong><?php echo $adminlang["PageKeywords"];?></strong></p>
 		<input type="text" name="PageKeywords" id="PageKeywords" value="">
 		<p><span class="gray size10"><?php echo $adminlang["msgMetaKeywords"];?></span><br><br></p>
+		<p><strong><?php echo $adminlang["PageProfilePhoto"];?> </strong></p>
+		<input type="file" name="ProfilFoto"/><br>
 		<p><strong><?php echo $adminlang["PageStatus"];?></strong></p>
 		<select name="PageStatus">
 			<option value="0"><?php echo $adminlang["Offline"];?></option>
 			<option value="1" selected><?php echo $adminlang["Online"];?></option>
 		</select>
-		<input type="submit" id="SubmitAddNewSubPage" name="SubmitAddNewSubPage" value='<?php echo $adminlang["SavePage"];?>' class="okay">
+		<input type="submit" id="SubmitAddNewSubPageWPhoto" name="SubmitAddNewSubPageWPhoto" value='<?php echo $adminlang["SavePage"];?>' class="okay">
 	</form>
 </div>

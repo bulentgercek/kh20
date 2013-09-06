@@ -23,10 +23,11 @@
 	// Site Genel Ayarları
 	$query = mysql_query("SELECT * FROM sitesettings");
 	$siteayarlar = mysql_fetch_array($query);
+	$sorgu = mysql_query("SELECT * FROM othersettings");
+	$digerayarlar = mysql_fetch_array($sorgu);
 
 	// Sabitler
 	define("PATH",realpath("."));
-	//define("URL","http://localhost/ruyakentsitesi/");
 	define("URL",$siteayarlar["SiteURL"]);
 	// define("TEMA_URL", $siteayarlar["SiteURL"]."/themes/".$siteayarlar["SiteTheme"]);
 	// define("TEMA", PATH."/themes/".$siteayarlar["SiteTheme"]);
@@ -35,6 +36,8 @@
 	define("SITE_DESC",$siteayarlar["SiteDescription"]);
 	define("SITE_KEYW",$siteayarlar["SiteKeyWords"]);
 	define("SITE_MAIL",$siteayarlar["SiteEMail"]);
+	define("PPP_W",$digerayarlar["PageProfilPhotoWidth"]);
+	define("PPP_H",$digerayarlar["PageProfilPhotoHeight"]);
 
 	//ob_end_flush();
 ?>
