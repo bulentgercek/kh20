@@ -116,9 +116,11 @@ $(function(){
 	/*SITE MAIN LANGUAGE FILTER - ENDS*/
 
 	/*PAGE MANAGEMENT TRANSACTIONS - STARTS*/
-		/*ADD NEW PAGE TRANSACTIONS - STARTS*/
+		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - STARTS*/
 			$("#SubmitAddNewPage").click(function(){
 				var Page = $("input[name=RefererPage]").val();
+				var Width = $("input[name=Width]").val();
+				var Height = $("input[name=Height]").val();
 				var PageTitle = $("input[name=PageTitle]").val();
 				PageTitle = $.trim(PageTitle);
 				var PageSummary = $("textarea[name=PageSummary]").val();
@@ -129,6 +131,7 @@ $(function(){
 				PageDescription = $.trim(PageDescription);
 				var PageKeywords = $("input[name=PageKeywords]").val();
 				PageKeywords = $.trim(PageKeywords);
+				var PageProfilePhoto = $("input[name=PageProfilePhoto]").val();
 				var PageStatus = $("select[name=PageStatus]").val();
 				PageStatus = $.trim(PageStatus);
 				var degerler = "PageTitle=" + PageTitle + "&PageSummary=" + PageSummary + "&PageContent=" + PageContent + "&PageDescription=" + PageDescription + "&PageKeywords=" + PageKeywords + "&PageStatus=" + PageStatus;
@@ -138,87 +141,79 @@ $(function(){
 						setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
 					});
 				}else{
-					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-					});
-					$.ajax({
-						type: "POST",
-						url: "_includes/pagemanagement/ajaxes/addNewPage.php",
-						data : degerler,
-						success: function(sonuc){
-							if(sonuc == "HATA"){
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-								});
-							}else if(sonuc == "SAMEPAGE"){
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-								});
-							}else{
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageSaved"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){window.location=Page}, 1000);
-								});
-							}
-						}
-					});
-				}
-			});
-		/*ADD NEW PAGE TRANSACTIONS - ENDS*/
-
-		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - STARTS - NEWONE*/
-			$("#SubmitAddNewPage2").click(function(){
-				var Page = $("input[name=RefererPage]").val();
-				var Width = $("input[name=Width]").val();
-				var Height = $("input[name=Height]").val();
-				var PageTitle = $("input[name=PageTitle]").val();
-				PageTitle = $.trim(PageTitle);
-
-				$("#AddNewPageWPhoto").ajaxForm({
-					beforeSend: function(){
+					if(PageProfilePhoto == ""){
 						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
 							$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
 						});
-					},
-					uploadProgress:function(olay, yuklenen, toplam, yuzde){},
-					complete: function(xhr){
-						if(xhr.responseText == "SAMEPAGE"){
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-							});
-						}else if(xhr.responseText == "HATA"){
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
-								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-							});
-						}else{
-							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
-								$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
-								setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
-							});
-							$("div.main").html(xhr.responseText);
-							$("#CropIt").Jcrop({
-								onChange: showCoords,
-								onSelect: showCoords,
-								setSelect: [0,0,Width,Height],
-								allowResize : true,
-								aspectRatio: Width / Height,
-								addClass: 'jcrop-dark'
-							});
-							function showCoords (c){
-								$("#x").val(c.x);
-								$("#y").val(c.y);
-								$("#x2").val(c.x2);
-								$("#y2").val(c.y2);
-								$("#w").val(c.w);
-								$("#h").val(c.h);
+						$.ajax({
+							type: "POST",
+							url: "_includes/pagemanagement/ajaxes/addNewPage.php",
+							data : degerler,
+							success: function(sonuc){
+								if(sonuc == "HATA"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+									});
+								}else if(sonuc == "SAMEPAGE"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+									});
+								}else{
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageSaved"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){window.location=Page}, 1000);
+									});
+								}
 							}
-						}
+						});
+					}else{
+						$("#AddNewPageWPhoto").ajaxForm({
+							beforeSend: function(){
+								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+									$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+								});
+							},
+							uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+							complete: function(xhr){
+								if(xhr.responseText == "SAMEPAGE"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
+									});
+								}else if(xhr.responseText == "HATA"){
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
+									});
+								}else{
+									$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgBeforePagePhotoCrop"}).done(function(data){
+										$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
+										setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 1500);
+									});
+									$("div.main").html(xhr.responseText);
+									$("#CropIt").Jcrop({
+										onChange: showCoords,
+										onSelect: showCoords,
+										setSelect: [0,0,Width,Height],
+										allowResize : true,
+										aspectRatio: Width / Height,
+										addClass: 'jcrop-dark'
+									});
+									function showCoords (c){
+										$("#x").val(c.x);
+										$("#y").val(c.y);
+										$("#x2").val(c.x2);
+										$("#y2").val(c.y2);
+										$("#w").val(c.w);
+										$("#h").val(c.h);
+									}
+								}
+							}
+						}).submit();
 					}
-				});
+				}
 			});
 
 			$("#SubmitAddNewPageCrop").click(function(){
@@ -243,62 +238,8 @@ $(function(){
 						}
 					}
 				});
-			})
-		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - ENDS - NEWONE*/
-
-		/*ADD NEW SUBPAGE TRANSACTIONS - STARTS*/
-			$("#SubmitAddNewSubPage").click(function(){
-				var Page = $("input[name=RefererPage]").val();
-				var SubPageID = $("select[name=SubPageID]").val();
-				SubPageID = $.trim(SubPageID);
-				var PageTitle = $("input[name=PageTitle]").val();
-				PageTitle = $.trim(PageTitle);
-				var PageSummary = $("textarea[name=PageSummary]").val();
-				PageSummary = $.trim(PageSummary);
-				var PageContent = $("textarea[name=PageContent]").val();
-				PageContent = $.trim(PageContent);
-				var PageDescription = $("textarea[name=PageDescription]").val();
-				PageDescription = $.trim(PageDescription);
-				var PageKeywords = $("input[name=PageKeywords]").val();
-				PageKeywords = $.trim(PageKeywords);
-				var PageStatus = $("select[name=PageStatus]").val();
-				PageStatus = $.trim(PageStatus);
-				var degerler = "SubPageID=" + SubPageID + "&PageTitle=" + PageTitle + "&PageSummary=" + PageSummary + "&PageContent=" + PageContent + "&PageDescription=" + PageDescription + "&PageKeywords=" + PageKeywords + "&PageStatus=" + PageStatus;
-				if(PageTitle == ""){
-					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgRequiredZone"}).done(function(data){
-						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-						setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-					});
-				}else{
-					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
-						$("#InfoPageManagement").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
-					});
-					$.ajax({
-						type: "POST",
-						url: "_includes/pagemanagement/ajaxes/addNewSubPage.php",
-						data : degerler,
-						success: function(sonuc){
-							if(sonuc == "HATA"){
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSaveError"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 3000);
-								});
-							}else if(sonuc == "SAMEPAGE"){
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgSamePage"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){$("#InfoPageManagement").hide('slow');}, 2500);
-								});
-							}else{
-								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPageSaved"}).done(function(data){
-									$("#InfoPageManagement").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show('slow');
-									setTimeout(function(){window.location=Page}, 1000);
-								});
-							}
-						}
-					});
-				}
 			});
-		/*ADD NEW SUBPAGE TRANSACTIONS - ENDS*/
+		/*ADD NEW PAGE WITH PROFILE PHOTO TRANSACTIONS - ENDS*/
 
 		/*ADD NEW SUBPAGE WITH PROFILE PHOTO TRANSACTIONS - STARTS*/
 			$("#SubmitAddNewSubPageWPhoto").click(function(){

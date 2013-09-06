@@ -23,7 +23,7 @@
 		<p><strong><?php echo $adminlang["PageTitle"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>
 		<input type="text" name="PageTitle" id="PageTitle" value='<?php echo $sayfa["PageTitle"]; ?>'><br>
 		<p><strong><?php echo $adminlang["PageSummary"];?></strong></p>
-		<textarea name="PageSummary" id="PageSummary" rows="3">'<?php echo $sayfa["PageSummary"]; ?>'</textarea><br>
+		<textarea name="PageSummary" id="PageSummary" rows="3"><?php echo $sayfa["PageSummary"]; ?></textarea><br>
 		<p><strong><?php echo $adminlang["PageContent"];?></strong></p>
 		<textarea name="PageContent" id="PageContent" rows="5" class="Editor"><?php echo $sayfa["PageContent"]; ?></textarea><br>
 		<p><strong><?php echo $adminlang["PageDescription"];?></strong></p>
@@ -34,7 +34,7 @@
 		<p><span class="gray size10"><?php echo $adminlang["msgMetaKeywords"];?></span><br><br></p>
 		<div>
 		<p><strong><?php echo $adminlang["PageProfilePhoto"];?></strong></p>
-		<p><img src='<?php echo URL.ss($sayfa["PageProfilePhoto"]) ?>' alt="" style='<?php echo "width: ".$bilgi["PageProfilPhotoWidth"]."px; height: ".$bilgi["PageProfilPhotoHeight"]."px;"; ?>'></p>
+		<p><img src='<?php echo ss($sayfa["PageProfilePhoto"]) == "-" ? URL."admin/_images/noimage.png" : URL.ss($sayfa["PageProfilePhoto"]);?>' alt="" style='<?php echo "width: ".$bilgi["PageProfilPhotoWidth"]."px; height: ".$bilgi["PageProfilPhotoHeight"]."px;"; ?>'></p>
 		<input type="file" name="PageProfilePhoto"/><br>
 		</div>
 		<p><strong><?php echo $adminlang["PageStatus"];?></strong></p>
