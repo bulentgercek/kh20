@@ -73,6 +73,14 @@ $adminlang = array(
 				"msgSiteKeywords"				=>"Meta keywords, your site should consist of a maximum of 260 characters. Those longer than 260 characters are interpreted as spam by the search engines.",
 			/*Site Ayarları - ENDS*/
 
+			/*Diğer Ayarlar - STARTS*/
+				"OtherSettingsPageTitle"			=>"OTHER SETTINGS",
+
+				"PageProfilePhotoWidth"			=>"Page Profile Photo Width (px)",
+				"PageProfilePhotoHeight"			=>"Page Profile Photo Height (px)",
+				"SliderPhotosHeight"			=>"Slide Photos Height (px)",
+			/*Diğer Ayarlar - ENDS*/
+
 			/*EPosta Ayarları - STARTS*/
 				"EMailSettingsPageTitle"			=>"E-MAIL SETTINGS",
 

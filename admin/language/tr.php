@@ -79,7 +79,7 @@ $adminlang = array(
 
 				"PageProfilePhotoWidth"			=>"Sayfa Profil Fotoğrafı Genişlik (px)",
 				"PageProfilePhotoHeight"			=>"Sayfa Profil Fotoğrafı Yükseklik (px)",
-				"SliderPhotosHeight"				=>"Slayt Fotoğrafları Yükseklik (px)",
+			"SliderPhotosHeight"				=>"Slayt Fotoğrafları Yükseklik (px)",
 			/*Diğer Ayarlar - ENDS*/
 
 			/*EPosta Ayarları - STARTS*/
