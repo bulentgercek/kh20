@@ -636,6 +636,152 @@ $(function(){
 				}
 			});
 		/*SHOW SUB PAGES2 FILTER TRANSACTIONS - ENDS*/
+
+		/*ADD PAGE PHOTOS TRANSACTIONS - STARTS*/
+			$("#SubmitPagePhotos").click(function(){
+				$("#PagePhotoUpload").ajaxForm({
+					beforeSend: function(){
+						$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+							$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+						});
+					},
+					uploadProgress:function(olay, yuklenen, toplam, yuzde){},
+					complete: function(xhr){
+						if(xhr.responseText == "OK"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgPagePhotosUploaded"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+							});
+						}else{
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUploadError"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data +"</p>").show('slow');
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+							});
+						}
+					}
+				});
+			});
+		/*ADD PAGE PHOTOS TRANSACTIONS - ENDS*/
+
+		/*SORT PAGE PHOTOS TRANSACTIONS- STARTS*/
+			$(".SortPagePhotos").sortable({
+				opacity: 0.6,
+				placeholder: "ui-state-highlight",
+				handle : '.handle',
+				update : function () {
+					var order = $('.SortPagePhotos').sortable('serialize');
+					$.get('_includes/pagemanagement/ajaxes/sortPagePhotos.php?'+order, function(data) {
+						if(data == "OK"){}
+					});
+				}
+			});
+			$(".SortPagePhotos").disableSelection();
+		/*SORT PAGE PHOTOS TRANSACTIONS - ENDS*/
+
+		/*DELETE PAGE PHOTO TRANSACTIONS - STARTS*/
+			$.deletePagePhoto = function(msg,id){
+				if(confirm(msg)){
+					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+						$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+					});
+					var PhotoID = id;
+					var degerler = "PhotoID=" + PhotoID;
+					$.ajax({
+						type: "POST",
+						url: "_includes/pagemanagement/ajaxes/deletePagePhoto.php",
+						data : degerler,
+						success: function(sonuc){
+							if(sonuc == "HATA"){
+								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgDeleteError"}).done(function(data){
+									$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
+									setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+								});
+							}else{
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');$("li#listItem_"+PhotoID).remove();}, 1500);
+							}
+						}
+					});
+				}else{}
+			}
+		/*DELETE PAGE PHOTO TRANSACTIONS- ENDS*/
+
+		/*DELETE ALL PAGE PHOTOS TRANSACTIONS - STARTS*/
+			$.deleteAllPagePhotos = function(msg,id){
+				if(confirm(msg)){
+					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+						$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+					});
+					var PageID = id;
+					$.post("_includes/pagemanagement/ajaxes/deleteAllPagePhotos.php", {PageID:PageID}).done(function(data){
+						if(data == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgDeleteError"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show();
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+								});
+						}else{
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgAllPagePhotosDeleted"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucSuccesful").html("<h3></h3><p>" + data + "</p>").show();
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');location.reload();}, 1500);
+							});
+						}
+					});
+				}else{
+
+				}
+			}
+		/*DELETE ALL PAGE PHOTOS TRANSACTIONS- ENDS*/
+
+		/*CHANGE STATUS PAGE PHOTO TRANSACTIONS - STARTS*/
+			$.changePagePhotoStatus = function(id){
+				$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+					$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+				});
+				var PhotoID = id;
+				var degerler = "PhotoID=" + PhotoID;
+				$.ajax({
+					type: "POST",
+					url: "_includes/pagemanagement/ajaxes/changePagePhotoStatus.php",
+					data : degerler,
+					success: function(sonuc){
+						if(sonuc == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgError"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+							});
+						}else{location.reload();}
+					}
+				});
+			}
+		/*CHANGE STATUS PAGE PHOTO TRANSACTIONS- ENDS*/
+
+		/*UPDATE PAGE PHOTO INFO TRANSACTIONS - STARTS*/
+			$("#SubmitUpdatePagePhoto").click(function(){
+				var PhotoID = $("input[name=PhotoID]").val();
+				PhotoID = $.trim(PhotoID);
+				var PhotoName = $("input[name=PhotoName]").val();
+				PhotoName = $.trim(PhotoName);
+				var PhotoDescription = $("input[name=PhotoDescription]").val();
+				PhotoDescription = $.trim(PhotoDescription);
+				var Page = $("input[name=RefererPage]").val();
+				$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+					$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+				});
+				var degerler = "PhotoID=" + PhotoID + "&PhotoName=" + PhotoName + "&PhotoDescription=" + PhotoDescription;
+				$.ajax({
+					type: "POST",
+					url: "_includes/pagemanagement/ajaxes/updatePagePhotoDetails.php",
+					data : degerler,
+					success: function(sonuc){
+						if(sonuc == "HATA"){
+							$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgUpdateError"}).done(function(data){
+								$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+								setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+							});
+						}else{window.location = Page;}
+					}
+				});
+			});
+		/*UPDATE PAGE PHOTO INFO TRANSACTIONS - ENDS*/
 	/*PAGE MANAGEMENT TRANSACTIONS - ENDS*/
 
 	/*E-MAIL SETTINGS TRANSACTIONS - STARTS*/

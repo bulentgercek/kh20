@@ -79,6 +79,7 @@ $adminlang = array(
 
 				"PageProfilePhotoWidth"			=>"Sayfa Profil Fotoğrafı Genişlik (px)",
 				"PageProfilePhotoHeight"			=>"Sayfa Profil Fotoğrafı Yükseklik (px)",
+				"SliderPhotosHeight"				=>"Slayt Fotoğrafları Yükseklik (px)",
 			/*Diğer Ayarlar - ENDS*/
 
 			/*EPosta Ayarları - STARTS*/
@@ -183,8 +184,32 @@ $adminlang = array(
 
 			/*Sayfa Düzenle - STARTS*/
 			"EditPagePageTitle"					=>"SAYFAYI DÜZENLE",
+			"EditPagePhotoPageTitle"				=>"FOTOĞRAFI DÜZENLE",
+
 			"PageProfilePhoto"					=>"Sayfa Profil Fotoğrafı",
+			"PagePhotos"						=>"Sayfa Fotoğrafları",
+			"DeleteAllPagePhotos"				=>"Tüm Fotoğrafları Sil",
+			"DeletePagePhoto"					=>"Fotoğrafı Sil",
+			"PhotoName"						=>"Fotoğraf Adı",
+			"PhotoDescription"					=>"Fotoğraf Açıklaması",
+
+			// Mesajlar
+			"msgSortPagePhotos"					=>"Sayfaya ait fotoğrafları sürükle bırak yöntemi ile sıralayabilirsiniz.",
+			"msgNoPagePhoto"					=>"Henüz bu sayfa için kaydedilmiş bir fotoğraf bulunmamaktadır.",
+			"msgDeleteAllPagePhotos"				=>"Sayfaya ait tüm fotoğrafları silmek istediğinize emin misiniz?",
+			"msgDeletePagePhoto"				=>"Bu fotoğrafı silmek istediğinize emin misiniz?",
+			"msgPagePhotosOffline"				=>"Yayında Olmayan Fotoğraflar",
+
 			/*Sayfa Düzenle - ENDS*/
+
+			/*Sayfaya Fotoğraf Yükle - STARTS*/
+			"AddPagePhotosPageTitle"				=>"SAYFAYA FOTOĞRAF(LAR) YÜKLE",
+
+			// Mesajlar
+			"msgSelectPage"					=>"Lütfen Sayfa Seçiniz",
+			"msgSelectPage2"					=>"Hangi sayfaya fotoğraf eklemek istiyorsanız, aşağıdaki açılır menüden sayfayı seçiniz.",
+
+			/*Sayfaya Fotoğraf Yükle - ENDS*/
 
 			/*Sayfaları (Alt) Göster - STARTS*/
 				"ShowPagesPageTitle"			=>"SAYFALARI GÖSTER",

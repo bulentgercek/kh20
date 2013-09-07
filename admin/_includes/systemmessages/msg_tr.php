@@ -29,7 +29,7 @@ $ajaxcode = array(
 	// Slayt İşlemleri
 	"msgSlideSorted"					=>"Sıralama işlemi başarı ile gerçekleştirildi.",
 	"msgSlideDeleted"					=>"Slayt başarı ile silindi. Lütfen bekleyiniz, sayfa yenileniyor..",
-	"msgSlideUploaded"					=>"Slayt (lar) başarı ile yüklendi.",
+	"msgSlideUploaded"					=>"Slayt(lar) başarı ile yüklendi.",
 
 	// Sayfa İşlemleri
 	"msgPageSaved"						=>"Sayfa başarı ile kaydedildi. Lütfen bekleyiniz, sayfalar listesine yönlendiriliyorsunuz..",
@@ -39,7 +39,9 @@ $ajaxcode = array(
 	"msgPageUpdated"					=>"Sayfa başarı ile güncellendi. Lütfen bekleyiniz, sayfalar listesine yönlendiriliyorsunuz..",
 	"msgNoSubPage"						=>"Bu sayfaya ait alt sayfa bulunmamaktadır.",
 	"msgPagePhotoCroppedOK"				=>"Sayfa profil fotoğrafı başarı ile kırpıldı. Lütfen bekleyiniz, sayfalar listesine yönlendiriliyorsunuz..",
-	"msgBeforePagePhotoCrop"				=>"Sayfa başarı ile kaydedildi. Sayfa profil fotosunı kırpmak için yönlendiriliyorsunuz.."
+	"msgBeforePagePhotoCrop"				=>"Sayfa başarı ile kaydedildi. Sayfa profil fotosunı kırpmak için yönlendiriliyorsunuz..",
+	"msgPagePhotosUploaded"				=>"Sayfaya ait fotoğraf(lar) başarı ile yüklendi.",
+	"msgAllPagePhotosDeleted"			=>"Sayfaya ait tüm fotoğraflar başarı ile silindi."
 
 );
 

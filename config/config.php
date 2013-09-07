@@ -38,6 +38,8 @@
 	define("SITE_MAIL",$siteayarlar["SiteEMail"]);
 	define("PPP_W",$digerayarlar["PageProfilPhotoWidth"]);
 	define("PPP_H",$digerayarlar["PageProfilPhotoHeight"]);
+	define("SLD_W",$digerayarlar["SliderWidth"]);
+	define("SLD_H",$digerayarlar["SliderHeight"]);
 
 	//ob_end_flush();
 ?>

@@ -175,8 +175,29 @@ $adminlang = array(
 			/*Sayfa Düzenle - STARTS*/
 			"EditPagePageTitle"					=>"EDIT PAGE",
 
-			"PageProfilePhoto"				=>"Sayfa Profil Fotoğrafı",
+			"PageProfilePhoto"					=>"Page Profile Photo",
+			"PagePhotos"						=>"Page Photos",
+			"DeleteAllPagePhotos"				=>"Delete All Page Photos",
+			"DeletePagePhoto"					=>"Delete Page Photo",
+			"PhotoName"						=>"Photo Name",
+			"PhotoDescription"					=>"Photo Description",
+
+			// Mesajlar
+			"msgSortPagePhotos"					=>"Sort photos with drag and drop method for the page.",
+			"msgNoPagePhoto"					=>"There are no photos for this page yet recorded.",
+			"msgDeleteAllPagePhotos"				=>"Are you sure you want to delete all the photos on the page?",
+			"msgDeletePagePhoto"				=>"Are you sure you want to delete this photo?",
+			"msgPagePhotosOffline"				=>"Offline Photos",
 			/*Sayfa Düzenle - ENDS*/
+
+			/*Sayfaya Fotoğraf Yükle - STARTS*/
+			"AddPagePhotosPageTitle"				=>"ADD PAGE PHOTO(S)",
+
+			// Mesajlar
+			"msgSelectPage"					=>"Please Select Page",
+			"msgSelectPage2"					=>"If you want to add a photo to which page, select the page drop-down menu below.",
+
+			/*Sayfaya Fotoğraf Yükle - ENDS*/
 
 			/*Sayfaları Göster - STARTS*/
 				"ShowPagesPageTitle"			=>"SHOW PAGES",
