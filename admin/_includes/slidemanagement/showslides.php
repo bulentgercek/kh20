@@ -1,12 +1,12 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["ShowSlidesPageTitle"]; ?></h2>
-<div id="InfoShowSlides" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<?php
 		$dilkodu = session("SMLID");
 		$sorgu = sorgula("SELECT * FROM slides WHERE LangID = '$dilkodu' ORDER BY SlideStatus DESC, SlideOrder");
 		if(mysql_affected_rows()){
 	?>
+	<p>- <a class="iptal" onclick="$.deleteAllSlides('<?php echo $adminlang["msgDeleteAllSlides"]; ?>');" href="javascript:void();"><?php echo $adminlang["DeleteAllSlides"]; ?></a></strong></p>
 	<table>
 		<tr class="title">
 			<th style="width: 15%;"><?php echo $adminlang["Slide"]; ?></th>

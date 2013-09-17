@@ -70,7 +70,7 @@
 			<div id="LeftSide">
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["SiteMainLanguage"];?></h2>
+					<h2 id="language"><?php echo $adminlang["SiteMainLanguage"];?></h2>
 					<ul>
 						<li class="b1">
 							<select id="SiteMainLanguage" name="Language" style="margin-bottom: 0; width: 97%;">
@@ -90,7 +90,7 @@
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["SiteSettingsMainTitle"];?></h2>
+					<h2 id="sitesettings"><?php echo $adminlang["SiteSettingsMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon view" href="<?php echo URL; ?>" target="_blank"><?php echo $adminlang["ViewSite"];?></a></li>
 						<li class="b2"><a class="icon settings" href="?zone=sitesettings&do=settings"><?php echo $adminlang["SiteSettings"];?></a></li>
@@ -101,14 +101,14 @@
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["LanguageManagementMainTitle"];?></h2>
+					<h2 id="languagemanagement"><?php echo $adminlang["LanguageManagementMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon list" href="?zone=languagemanagement&do=showlanguages"><?php echo $adminlang["ShowLanguages"];?></a></li>
 					</ul>
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["PageManagementMainTitle"];?></h2>
+					<h2 id="pagemanagement"><?php echo $adminlang["PageManagementMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon list" href="?zone=pagemanagement&do=showpages"><?php echo $adminlang["ShowPages"];?></a></li>
 						<li class="b2"><a class="icon plus" href="?zone=pagemanagement&do=addnewpage"><?php echo $adminlang["AddNewPage"];?></a></li>
@@ -123,7 +123,7 @@
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["UserManagementMainTitle"];?></h2>
+					<h2 id="usermanagement"><?php echo $adminlang["UserManagementMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon user" href="?zone=usermanagement&do=showallusers"><?php echo $adminlang["ShowAllUsers"];?></a></li>
 						<li class="b2"><a class="icon plus" href="?zone=usermanagement&do=addnewuser"><?php echo $adminlang["AddNewUser"];?></a></li>
@@ -131,7 +131,7 @@
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["SlideManagementMainTitle"];?></h2>
+					<h2 id="slidemanagement"><?php echo $adminlang["SlideManagementMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon list" href="?zone=slidemanagement&do=showslides"><?php echo $adminlang["ShowSlides"];?></a></li>
 						<li class="b2"><a class="icon photo" href="?zone=slidemanagement&do=addnewslide"><?php echo $adminlang["AddNewSlide"];?></a></li>
@@ -140,11 +140,18 @@
 				</div>
 
 				<div class="Menu">
-					<h2><?php echo $adminlang["PhotoGalleryManagementMainTitle"];?></h2>
+					<h2 id="photogallerymanagement"><?php echo $adminlang["PhotoGalleryManagementMainTitle"];?></h2>
 					<ul>
 						<li class="b1"><a class="icon list" href="?zone=photogallerymanagement&do=showphotos"><?php echo $adminlang["ShowPhotos"];?></a></li>
-						<li class="b2"><a class="icon photo" href="?do=photogallerymanagement&do=addnewphoto"><?php echo $adminlang["AddNewPhotos"];?></a></li>
-						<li class="b1"><a class="icon list" href="?do=photogallerymanagement&do=addnewcategory"><?php echo $adminlang["AddNewCategory"];?></a></li>
+						<li class="b2"><a class="icon photo" href="?zone=photogallerymanagement&do=addnewphoto"><?php echo $adminlang["AddNewPhotos"];?></a></li>
+						<li class="b1"></li>
+						<li class="b2"><a class="icon list" href="?zone=photogallerymanagement&do=showcategories"><?php echo $adminlang["ShowCategories"];?></a></li>
+						<li class="b1"><a class="icon plus" href="?zone=photogallerymanagement&do=addnewcategory"><?php echo $adminlang["AddNewCategory"];?></a></li>
+						<li class="b2"><a class="icon refresh" href="?zone=photogallerymanagement&do=sortcategories"><?php echo $adminlang["SortCategories"];?></a></li>
+						<li class="b1"></li>
+						<li class="b2"><a class="icon list" href="?zone=photogallerymanagement&do=showsubcategories"><?php echo $adminlang["ShowSubCategories"];?></a></li>
+						<li class="b1"><a class="icon plus" href="?zone=photogallerymanagement&do=addnewsubcategory"><?php echo $adminlang["AddNewSubCategory"];?></a></li>
+						<li class="b2"><a class="icon refresh" href="?zone=photogallerymanagement&do=sortsubcategories"><?php echo $adminlang["SortSubCategories"];?></a></li>
 					</ul>
 				</div>
 
@@ -178,8 +185,9 @@
 	<!-- GENEL ENDS -->
 	<!-- FOOTER STARTS -->
 		<div id="Footer">
-			&#169; 2013 - All Rights Reserved. | Coded by: <a href="http://www.suhaduran.com" target="_blank" title="Coded by Süha DURAN">Süha DURAN</a> | Powered by: <a href="http://www.networx-it.com" target="_blank" title="Powered by Networx-IT">Networx-IT</a> - <a href="http://www.cizgiajans.com" target="_blank" title="Powered by Çizgi Ajans">Çizgi Ajans</a>
+			&#169; 2013 - Tüm Hakları Saklıdır. | Programlama: <a href="http://www.suhaduran.com" target="_blank" title="Coded by Süha DURAN">Süha DURAN</a> | Destekleyen: <a href="http://www.networx-it.com" target="_blank" title="Powered by Networx-IT">Networx-IT</a> & <a href="http://www.cizgiajans.com" target="_blank" title="Powered by Çizgi Ajans">Çizgi Ajans</a><br />
+			Paneldeki tüm fonksiyonların çalışması ve en iyi şekilde görüntüyü almak için <a href="http://www.google.com/intl/tr/chrome/" target="_blank">Google Chrome</a> kullanın.
 		</div>
-		<!-- FOOTER ENDS -->
+	<!-- FOOTER ENDS -->
 </body>
 </html>

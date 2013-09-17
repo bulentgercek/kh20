@@ -3,6 +3,18 @@ $(function(){
 	/*CKEDITOR INITIALIZE*/
 	$("textarea.Editor").ckeditor();
 
+	/*MENU TOOGLE*/
+		$.urlVeri = function(deger){
+			var veribul = new RegExp('[\\?&]' + deger + '=([^&#]*)').exec(window.location.href);
+			return veribul[1] || 0;
+		}
+		var QueryString = $.urlVeri("zone");
+		$(".Menu h2").not(this).next("ul").hide();
+		$(".Menu h2").click( function() { $(this).next("ul").slideToggle(); });
+		$(".Menu h2#language").not(this).next("ul").show();
+		$(".Menu h2#"+QueryString).not(this).next("ul").show("normal");
+	/*MENU TOOGLE*/
+
 	/*SOCIAL NETWORK TRANSACTIONS - STARTS*/
 		$("#SocialNetworkSubmit").click(function(){
 			$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
@@ -1091,6 +1103,24 @@ $(function(){
 		/*DELETE USER TRANSACTIONS - ENDS*/
 	/*USER MANAGEMENT TRANSACTIONS - ENDS*/
 
+	/*PHOTO GALLERY MANAGEMENT TRANSACTIONS - STARTS*/
+		/*ADD NEW CATEGORY TRANSACTIONS - STARTS*/
+			$("#SubmitAddNewCategory").click(function(){
+				var CategoryName = $("input[name=PhotoGalleryNewCategoryName]").val();
+				CategoryName = $.trim(CategoryName);
+
+				if(CategoryName == ""){
+					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgRequiredZone"}).done(function(data){
+						$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+						setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+					});
+				}else{
+
+				}
+			});
+		/*ADD NEW CATEGORY TRANSACTIONS - ENDS*/
+	/*PHOTO GALLERY MANAGEMENT TRANSACTIONS - ENDS*/
+
 	/*SLIDE MANAGEMENT TRANSACTIONS - STARTS*/
 		/*ADD SLIDE PHOTO(S) TRANSACTIONS - STARTS*/
 			$("#SubmitNewSlides").click(function(){
@@ -1157,6 +1187,30 @@ $(function(){
 				}else{}
 			}
 		/*DELETE SLIDE PHOTO TRANSACTIONS- ENDS*/
+
+		/*DELETE ALL SLIDES PHOTO TRANSACTIONS - STARTS*/
+			$.deleteAllSlides = function(msg){
+				if(confirm(msg)){
+					$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgProcessing"}).done(function(data){
+						$("#SiteInfoMessage").removeClass().addClass("ucPopup ucWarning").html("<h3></h3><p>" + data + "</p>").show('slow');
+					});
+					var degerler = "SlideID=0";
+					$.ajax({
+						type: "POST",
+						url: "_includes/slidemanagement/ajaxes/deleteAllSlides.php",
+						data : degerler,
+						success: function(sonuc){
+							if(sonuc == "HATA"){
+								$.post("_includes/systemmessages/getSystemMessages.php", {MessageCode:"msgDeleteError"}).done(function(data){
+									$("#SiteInfoMessage").removeClass().addClass("ucPopup ucError").html("<h3></h3><p>" + data + "</p>").show('slow');
+									setTimeout(function(){$("#SiteInfoMessage").hide('slow');}, 3000);
+								});
+							}else{location.reload();}
+						}
+					});
+				}else{}
+			}
+		/*DELETE ALL SLIDES PHOTO TRANSACTIONS- ENDS*/
 
 		/*CHANGE STATUS SLIDE PHOTO TRANSACTIONS - STARTS*/
 			$.changeSlideStatus = function(id){

@@ -36,7 +36,12 @@ $adminlang = array(
 
 			"ShowPhotos"					=>"Fotoğrafları Göster",
 			"AddNewPhotos"					=>"Yeni Fotoğraf (lar) Yükle",
+			"ShowCategories"				=>"Kategorileri Göster",
 			"AddNewCategory"				=>"Yeni Kategori Yükle",
+			"SortCategories"				=>"Kategorileri Sırala",
+			"ShowSubCategories"				=>"Alt Kategorileri Göster",
+			"AddNewSubCategory"				=>"Yeni Alt Kategori Yükle",
+			"SortSubCategories"				=>"Alt Kategorileri Sırala",
 
 		// Sayfa Yönetimi
 			"PageManagementMainTitle"		=>"Sayfa Yönetimi",
@@ -132,7 +137,7 @@ $adminlang = array(
 				"msgAddNewSlide01"				=>"<strong class=\"underline\">YÜKLE</strong> butonuna bir kez bastıktan sonra, <strong class=\"underline\">yüklemenin tamamlandığına dair</strong> mesaj gelene kadar lütfen bekleyiniz...",
 				"msgAddNewSlide02"				=>"Bir seferde <strong class=\"underline\">maksimum 5 fotoğraf</strong> yüklemenizi öneririz.",
 				"msgAddNewSlide03"				=>"Yükleyebileceğiniz maksimum fotoğraf boyutu, <strong class=\"underline\">fotoğraf başına 5MB'ı geçmemelidir.</strong>",
-				"msgAddNewSlide04"				=>"Slider <strong class=\"underline\">fotoğraf boyutu 2000px X 616px</strong> 'dir. Yükleyeceğiniz fotoğraf bu boyutlarda değil ise otomatik olarak boyutlandırılacaktır. Eğer yüklemiş olduğunuz fotoğraf bu boyutlardan küçük ise otomatik boyutlandırma sonrası fotoğrafta bozulmalar yaşanabilir.",
+				"msgAddNewSlide04"				=>"Slider <strong class=\"underline\">fotoğraf boyutu ".SLD_W."px X ".SLD_H."px</strong> 'dir. Yükleyeceğiniz fotoğraf bu boyutlarda değil ise otomatik olarak boyutlandırılacaktır. Eğer yüklemiş olduğunuz fotoğraf bu boyutlardan küçük ise otomatik boyutlandırma sonrası fotoğrafta bozulmalar yaşanabilir.",
 			/*Yeni Slayt Ekle - ENDS*/
 
 			/*Slaytları Sırala - STARTS*/
@@ -145,10 +150,12 @@ $adminlang = array(
 				"Slide"						=>"Slayt",
 				"SlideAddTime"					=>"Eklenme Tarihi",
 				"SlideStatus"					=>"Durumu",
+				"DeleteAllSlides"				=>"Tüm Slaytları Sil",
 
 				// Mesajlar
 				"msgDeleteSlide"				=>"Bu slaytı silmek istediğinize emin misiniz?",
 				"msgNoSlide"					=>"Şu an veritabanında kayıtlı slayt bulunmamaktadır.",
+				"msgDeleteAllSlides"			=>"Tüm slaytları silmek istediğinize emin misiniz?",
 			/*Slaytları Göster - ENDS*/
 
 			/*Slaytları Düzenle - STARTS*/
@@ -231,6 +238,16 @@ $adminlang = array(
 			/*Sayfaları Sırala - ENDS*/
 		/*SAYFA YÖNETİMİ SAYFALARI - ENDS*/
 
+		/*FOTOĞRAF GALERİSİ SAYFALARI - STARTS*/
+			/*Yeni Kategori Ekle - Starts*/
+				"AddNewCategoryPageTitle"		=>"YENİ KATEGORİ EKLE",
+
+				"CategoryName"					=>"Kategori Adı",
+				"CategoryDescription"			=>"Kategori Açıklama",
+				"CategoryStatus"				=>"Kategori Durumu",
+			/*Yeni Kategori Ekle - Ends*/
+		/*FOTOĞRAF GALERİSİ SAYFALARI - ENDS*/
+
 		/*DİL YÖNETİMİ SAYFALARI - STARTS*/
 			/*Dilleri Göster - STARTS*/
 				"ShowLanguagesTitle"			=>"DİLLERİ GÖSTER",
@@ -255,6 +272,7 @@ $adminlang = array(
 		"Update"						=>"GÜNCELLE",
 		"SavePage"					=>"SAYFAYI KAYDET",
 		"UpdatePage"					=>"SAYFAYI GÜNCELLE",
+		"SavePGCategory"			=>"KATEGORİYİ EKLE",
 
 		// Titles
 		"Open"						=>"Açık",

@@ -23,8 +23,8 @@
 				$handle->file_new_name_body = substr(base64_encode(uniqid(true)), 0, 20);
 				/* Resmi Yeniden Boyutlandır */
 				$handle->image_resize = true;
-				$handle->image_x = 800;
-				$handle->image_y = 600;
+				$handle->image_x = SLD_W;
+				$handle->image_y = SLD_H;
 				/* Resim Yükleme İzni */
 				$handle->allowed = array('image/*');
 				/* Resmi İşle */
@@ -35,8 +35,8 @@
 				$handle->file_new_name_body = "TH-".substr(base64_encode(uniqid(true)), 0, 20);
 				/* Resmi Yeniden Boyutlandır */
 				$handle->image_resize = true;
-				$handle->image_x = 400;
-				$handle->image_y = 300;
+				$handle->image_x = SLD_W / 2;
+				$handle->image_y = SLD_H / 2;
 				/* Resim Yükleme İzni */
 				$handle->allowed = array('image/*');
 				/* Resmi İşle */

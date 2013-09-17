@@ -37,6 +37,12 @@ $adminlang = array(
 			"ShowPhotos"					=>"Show Photos",
 			"AddNewPhotos"					=>"Add New Photo(s)",
 			"AddNewCategory"				=>"Add New Category",
+			"ShowCategories"				=>"Show Categories",
+			"AddNewCategory"				=>"Add New Category",
+			"SortCategories"				=>"Sort Categories",
+			"ShowSubCategories"				=>"Show Sub Categories",
+			"AddNewSubCategory"				=>"Add New Sub Category",
+			"SortSubCategories"				=>"Sort Sub Categories",
 
 		// Sayfa Yönetimi
 			"PageManagementMainTitle"		=>"Sayfa Yönetimi",
@@ -131,7 +137,7 @@ $adminlang = array(
 				"msgAddNewSlide01"				=>"- Click <strong class=\"underline\">UPLOAD</strong> button once and then please wait until a message that the upload process is completed.",
 				"msgAddNewSlide02"				=>"- We eecommend that you install a <strong class=\"underline\">maximum of 5 photos</strong> at a time.",
 				"msgAddNewSlide03"				=>"- You can install a <strong class=\"underline\">maximum photo size must not exceed 5MB is per photo</strong>.",
-				"msgAddNewSlide04"				=>"- Slideshow <strong class=\"underline\">image sizes are 2000px X 616px</strong> respectively. This photo is not to install it automatically dimensioned sizes. If you have installed the automatic resizing images after the photo sizes small distortions occur.",
+				"msgAddNewSlide04"				=>"- Slideshow <strong class=\"underline\">image sizes are ".SLD_W."px X ".SLD_H."px</strong> respectively. This photo is not to install it automatically dimensioned sizes. If you have installed the automatic resizing images after the photo sizes small distortions occur.",
 			/*Yeni Slayt Ekle - ENDS*/
 
 			/*Slaytları Sırala - STARTS*/
@@ -144,9 +150,12 @@ $adminlang = array(
 				"Slide"						=>"Slide",
 				"SlideAddTime"					=>"Add Time",
 				"SlideStatus"					=>"Status",
+				"DeleteAllSlides"				=>"Delete All Slides",
 
 				// Mesajlar
 				"msgDeleteSlide"				=>"Are you sure you want to delete this slide?",
+				"msgNoSlide"					=>"There is no slide in the database.",
+				"msgDeleteAllSlides"			=>"Are you sure you want to delete all slides?",
 			/*Slaytları Göster - ENDS*/
 
 			/*Slaytları Düzenle - STARTS*/
