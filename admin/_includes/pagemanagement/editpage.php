@@ -4,7 +4,6 @@
 	$bilgi = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["EditPagePageTitle"];?></h2>
-<div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <?php
 	$id = get("id");
 	$sorgu = sorgula("SELECT * FROM pages WHERE PageID = '$id'");

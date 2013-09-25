@@ -1,6 +1,5 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["AddNewUserPageTitle"];?></h2>
-<div id="InfoUserManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form action="" method="post" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo URL."admin/index.php?zone=usermanagement&do=showallusers"; ?>'/>

@@ -11,7 +11,6 @@
 
  ?>
 <h2 class="title"><?php echo $adminlang["AddNewUserPageTitle"];?></h2>
-<div id="InfoUserManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form action="" method="post" onsubmit="return false">
 		<p><strong><?php echo $adminlang["UserFullName"];?></p>

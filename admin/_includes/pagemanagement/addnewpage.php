@@ -4,7 +4,6 @@
 	$bilgi = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["AddNewPageTitle"];?></h2>
-<div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form id="AddNewPageWPhoto" action="_includes/pagemanagement/ajaxes/addNewPageWPhoto.php" method="post" enctype="multipart/form-data" onsubmit="return false">
 		<input type="hidden" name="RefererPage" id="RefererPage" value='<?php echo URL."admin/index.php?zone=pagemanagement&do=showpages"; ?>'/>

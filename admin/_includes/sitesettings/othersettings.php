@@ -5,7 +5,6 @@
 	// $gelen = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["OtherSettingsPageTitle"];?></h2>
-<div id="InfoSiteSettings" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form action="" method="post" onsubmit="return false">
 		<!-- <p><span class="gray size10"><?php echo $adminlang["msgSiteTitle"];?><br><br></p> -->

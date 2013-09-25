@@ -6,25 +6,22 @@
 
 /*GENEL FONKSİYONLAR - BAŞLANGIÇ*/
 
-	// Tema İçerik Fonksiyonu
+// Tema İçerik Fonksiyonu
 	function Icerik(){
-
 		$sayfa = get("page");
+		switch ($sayfa) {
+			case 'icerik':
+				require_once "includes/icerik.php";
+			break;
 
-			switch ($sayfa) {
+			case 'home':
+				require_once "includes/default.php";
+			break;
 
-				case 'icerik':
-					require_once "includes/icerik.php";
-				break;
-
-				case 'home':
-					require_once "includes/default.php";
-				break;
-
-				default:
-					require_once "includes/default.php";
-				break;
-			}
+			default:
+				require_once "includes/default.php";
+			break;
+		}
 	}
 
 	// Tırnak Değiştirme Fonksiyonu
@@ -76,7 +73,6 @@
 				}else{
 					echo '<img src="http://www.mgm.gov.tr/sunum/tahmin-show-2-en.aspx?m='.$hava["CityValue"].'&basla='.$hava["Start"].'&bitir='.$hava["Finish"].'&rC='.$hava["BorderColor"].'&rZ='.$hava["BackColor"].'" style="width:'.$hava["Width"].'; height:'.$hava["Height"].';" alt="'.$hava["CityValue"].'" title="Weather in '.$hava["CityName"].'" />';
 				}
-
 			}
 		}
 		else{
@@ -153,23 +149,23 @@
 	function turkcetarih($f, $zt = 'now'){
 		$z = date("$f", strtotime($zt));
 		$donustur = array(
-			'Monday'	=> 'Pazartesi',
-			'Tuesday'	=> 'Salı',
+			'Monday'		=> 'Pazartesi',
+			'Tuesday'		=> 'Salı',
 			'Wednesday'	=> 'Çarşamba',
 			'Thursday'	=> 'Perşembe',
-			'Friday'	=> 'Cuma',
+			'Friday'		=> 'Cuma',
 			'Saturday'	=> 'Cumartesi',
-			'Sunday'	=> 'Pazar',
-			'January'	=> 'Ocak',
+			'Sunday'		=> 'Pazar',
+			'January'		=> 'Ocak',
 			'February'	=> 'Şubat',
 			'March'		=> 'Mart',
 			'April'		=> 'Nisan',
 			'May'		=> 'Mayıs',
 			'June'		=> 'Haziran',
 			'July'		=> 'Temmuz',
-			'August'	=> 'Ağustos',
+			'August'		=> 'Ağustos',
 			'September'	=> 'Eylül',
-			'October'	=> 'Ekim',
+			'October'		=> 'Ekim',
 			'November'	=> 'Kasım',
 			'December'	=> 'Aralık',
 			'Mon'		=> 'Pts',

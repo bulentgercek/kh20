@@ -11,7 +11,6 @@
 	$slayt = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["EditSlidePageTitle"];?></h2>
-<div id="InfoSlideDetails" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form action="" method="post" onsubmit="return false">
 		<input type="hidden" name="SlideID" id="SlideID" value='<?php echo $id; ?>'/>

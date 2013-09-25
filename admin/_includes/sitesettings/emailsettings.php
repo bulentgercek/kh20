@@ -4,7 +4,6 @@
 	$gelen = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["EMailSettingsPageTitle"];?></h2>
-<div id="InfoEMailSettings" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form action="" method="post">
 		<p><strong><?php echo $adminlang["SMTPAddress"];?> </strong><span class="red">(<?php echo $adminlang["Required"];?>)</span></p>

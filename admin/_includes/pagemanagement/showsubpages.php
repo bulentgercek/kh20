@@ -1,6 +1,5 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["ShowSubPagesPageTitle"]; ?></h2>
-<div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="n_warning" style="display: block !important; margin-bottom: 5px; width: 700px; margin-left: 10px;"><p><?php echo $adminlang["msgPageFilter"]; ?></p></div>
 <div class="main">
 	<select name="FilterPage" id="FilterPage">

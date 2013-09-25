@@ -4,7 +4,6 @@
 	$gelen = gelen($sorgu);
 ?>
 <h2 class="title"><?php echo $adminlang["SocialNetworkPageTitle"];?></h2>
-<div id="InfoSocialNetwork" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<form id="SocialNetworkForm" action="" method="post" onsubmit="return false">
 		<p><strong>Facebook</strong></p>

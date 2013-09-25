@@ -2,7 +2,6 @@
 	echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null;
 ?>
 <h2 class="title"><?php echo $adminlang["AddNewSubPageTitle"];?></h2>
-<div id="InfoPageManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="n_warning" style="display: block !important; margin-bottom: -10px; width: 700px; margin-left: 10px;"><p><?php echo $adminlang["msgSelectMainPage"]; ?></p></div><br>
 <div class="main">
 	<form id="AddNewSubPageWPhoto" action="_includes/pagemanagement/ajaxes/addNewSubPageWPhoto.php" method="post" enctype="multipart/form-data" onsubmit="return false">

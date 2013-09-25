@@ -1,6 +1,5 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["ShowLanguagesTitle"]; ?></h2>
-<div id="InfoShowLanguages" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<?php
 		$sorgu = sorgula("SELECT * FROM languages ORDER BY LangStatus DESC, LangOrder");

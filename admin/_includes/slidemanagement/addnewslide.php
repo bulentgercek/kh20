@@ -1,6 +1,5 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["AddNewSlidePageTitle"]; ?></h2>
-<div id="InfoSlideManagement" class="ucPopup"><h3></h3><p></p></div>
 <div class="n_error" style="display: block !important; margin-bottom: -10px; width: 700px; margin-left: 10px;"><p class="red"><?php echo $adminlang["msgAddNewSlide01"]; ?></p></div>
 <div class="n_error" style="display: block !important; margin-bottom: -10px; width: 700px; margin-left: 10px;"><p class="red"><?php echo $adminlang["msgAddNewSlide04"]; ?></p></div>
 <div class="n_warning" style="display: block !important; margin-bottom: -10px; width: 700px; margin-left: 10px;"><p class="red"><?php echo $adminlang["msgAddNewSlide02"]; ?></p></div>

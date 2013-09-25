@@ -1,6 +1,5 @@
 <?php echo !defined("ZUBIZARETTA") ? die("Hop dedik!") : null; ?>
 <h2 class="title"><?php echo $adminlang["ShowAllUsersPageTitle"]; ?></h2>
-<div id="InfoShowAllUsers" class="ucPopup"><h3></h3><p></p></div>
 <div class="main">
 	<?php
 		$sorgu = sorgula("SELECT * FROM users");
